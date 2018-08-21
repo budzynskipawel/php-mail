@@ -27,11 +27,21 @@ $email_subject = "New Form submission";
 $email_body = "You have received a new message from the user $name.\nEmail: $visitor_email \n".
     "Here is the message:\n $message".
 
+
 $to = "budzynski.pawel@gmail.com";//<== update the email address
 $headers = "From: $email_from \r\n";
 $headers .= "Reply-To: $visitor_email \r\n";
+
+$confirm_subject = "Your email to OLTOM was sent.";
+$confirm_body = "You have sent a new message.\n".
+"Here is the message:\n $message" . 'CIAO!';
+
+
+
 //Send the email!
 mail($to,$email_subject,$email_body,$headers);
+mail($visitor_email, $confirm_subject, $confirm_body);
+
 //done. redirect to thank-you page.
 header('Location: thank-you.html');
 
